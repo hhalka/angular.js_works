@@ -1,0 +1,12 @@
+<div class="row" ng-controller="firstCtrl as first">
+    <div class="col-md-7">
+        <h1>this is first question</h1>
+        <ul class='answerList'><p class='list-group-item active'>{{first.test.question}}</p>
+            <li ng-repeat="option in first.test.options">
+                <label><input type="checkbox" value={{option}} ng-model="first.selected[option]"/>{{option}}</label>
+            </li>
+        </ul>
+        <input type="button" value="Check" class="btn btn-primary" ng-click="first.checkAnswer(nav.rightAnswer)"/>
+        <input type="button" value="Next" class="btn btn-link" ng-show="first.showBtn" ng-click="first.goAhead()">
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="blogApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MyBlog</title>
+    <script src="jquery-2.1.3.min.js"></script>
+    <script src="script.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  ng-controller="blogCtrl as blog">
+    <div id="block" ng-show="blog.showBlock">
+        <div id="login"  ng-show="blog.showLogin">
+            <form action="#" id=loginForm class="form-horizontal">
+                <div class="form-group">
+                    <label for="userName" class="control-label col-md-2">Login</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" placeholder="login" ng-model="blog.user.name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pwd" class="control-label col-md-2">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" placeholder="password" ng-model="blog.user.pwd"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember" class="col-md-1" />
+                    <label for="remember" class="col-md-4">Remember me</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <input type="button" id="enter" value="Enter" class="btn btn-success" ng-click="blog.checkUser()"/>
+                        <input type="button" id="forgotPwd" value="Forgot password" class="btn btn-warning" />
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group" ng-show="blog.error">
+                    <span class="error col-md-6">Wrong e-mail or password</span>
+                    <div class="col-md-4 col-md-offset-2">
+                        <input type="button" id="close" value="Close" class="btn btn-default"  ng-click="blog.close()">
+                    </div>
+                </div>
+            </form>                
+        </div>
+        
+        <div id="changeWindow" ng-show="blog.showChangeWindow">
+            <form action="#" id=changeForm class="form-horizontal">
+                <div class="form-group">
+                    <label for="changeTheme" class="control-label col-md-2">Theme</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="changeTheme" ng-model="blog.changed.theme" ng-value="changed.theme"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="changeMessage" class="control-label col-md-2">Message</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" id="changeMessage" ng-model="blog.changed.message" ng-value="changed.message"></textarea>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-8">
+                        <input type="button" id="saveChage" value="Save" class="btn btn-success" ng-click="blog.saveChanged()"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   <div class="container">
+        <div class="greeting col-md-offset-2">
+            <div class="row">
+                <h1 class="col-md-2">Hello, </h1><h1 class="col-md-4" ng-show="blog.currentUser.name">{{blog.currentUser.name}}</h1>
+            </div>
+        </div>
+        <form action="#" id="newPostForm" class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="theme">Theme: </label>
+                <div class="col-md-10">
+                    <input type="text" id="theme" class="form-control" ng-model="blog.theme"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="message">Message: </label>
+                <div class="col-md-10">
+                    <textarea id="message" class="form-control" ng-model="blog.message"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <input type="button" id="send" value="Send" class="btn btn-warning" ng-click="blog.sendPost()"/>
+                </div>
+            </div>
+        </form>
+        
+        <div class="container">
+            <div class="row post" ng-repeat="post in blog.posts">
+                <div class="row list-group-item active">
+                    <h1>{{post.theme}}</h1>
+                    <p><span class="glyphicon glyphicon-time"></span>Post by {{post.user.name}}, {{post.date}}</p>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="button" id="change" value="Change" class="btn-xs btn btn-warning" ng-click="blog.changePost(post)"/>
+                            <input type="button" id="remove" value="Remove" class="btn-xs btn-danger" ng-click="blog.removePost(post)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row list-group-item-info message">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h4>{{post.message}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+    
+</body>
+</html>

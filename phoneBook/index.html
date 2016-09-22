@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="phoneBook">
+<head>
+    <meta charset="UTF-8">
+    <title>PhoneBook</title>
+    <script src="jquery-2.1.3.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body ng-controller="mainCtrl as main">
+    <div id="block" ng-show="main.showBlock">
+        <div id="addWindow" ng-show="main.showAddWindow">
+            <form action="#" id="addForm" class="form-horizontal">
+                <div class="row">
+                    <label for="firstName" class="col-md-4">First name</label>
+                    <label for="lastName" class="col-md-4">Last name</label>
+                    <label for="phoneNumber" class="col-md-4">Phone number</label>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="firstName" ng-model="main.itemToAdd.firstName"/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="lastName" ng-model="main.itemToAdd.lastName"/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="phoneNumber" ng-model="main.itemToAdd.number"/>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-2 col-md-offset-10">
+                    <input type="button" value="Add" ng-click="main.addItem()"/>
+                </div>
+            </form>
+        </div>
+        
+        <div id="changeWindow" ng-show="main.showChangeWindow">
+            <form action="#" id="addForm" class="form-horizontal">
+                <div class="row">
+                    <label for="firstNameChange" class="col-md-4">First name</label>
+                    <label for="lastNameChange" class="col-md-4">Last name</label>
+                    <label for="phoneNumberChange" class="col-md-4">Phone number</label>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="firstNameChange" ng-model="main.itemToChange.firstName" value={{main.itemToChange.firstName}}/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="lastNameChange" ng-model="main.itemToChange.lastName" value={{main.itemToChange.lastName}}/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="phoneNumberChange" ng-model="main.itemToChange.number" value={{main.itemToChange.number}}/>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-2 col-md-offset-10">
+                    <input type="button" value="Save" ng-click="main.saveChanged()">
+                </div>
+            </form>
+        </div>
+    </div>
+   <div class="container">
+        <form action="#" class="form-horizontal" id="findForm">
+            <div class="form-group">
+                <label for="findInput" class="control-label col-md-1">Find: </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="findInput" placeholder="type to find" ng-model="main.searchText"/>
+                </div>
+                <div class="col-md-1">
+                    <input type="button" class="btn btn-success" value="Add contact" ng-click="main.openAddWindow()"/>
+                </div>
+            </div>
+        </form>
+       
+        <div class="container" ng-controller="orderCtrl as order">
+            <div class="row head">
+                <div class="col-md-3" ng-class="{dropup: order.reverse}">
+                    <a href="#" ng-click="order.sortBy('firstName')">
+                        First Name
+                        <span class="caret" ng-show="order.sortField === 'firstName'"></span>
+                    </a>
+                </div>
+                <div class="col-md-3" ng-class="{dropup: order.reverse}">
+                    <a href="#" ng-click="order.sortBy('lastName')">
+                        Last name
+                        <span class="caret" ng-show="order.sortField === 'lastName'"></span>
+                    </a>
+                </div>
+                <div class="col-md-2" ng-class="{dropup: order.reverse}">
+                    <a href="#" ng-click="order.sortBy('phoneNumber')">
+                        Phone number
+                        <span class="caret" ng-show="order.sortField === 'phoneNumber'"></span>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">Change</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">Delete</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row item" ng-repeat="item in main.data | orderBy: order.sortField:order.reverse | filter: main.searchText">
+                <p class="col-md-3">{{item.firstName}}</p>
+                <p class="col-md-3">{{item.lastName}}</p>
+                <p class="col-md-2">{{item.number}}</p>
+                <div class="col-md-2">
+                    <input type="button" value="Change" class="btn btn-primary" ng-click="main.openChangeWindow(item)"/>
+                </div>
+                <div class="col-md-2">
+                    <input type="button" value="Remove" class="btn btn-danger" ng-click="main.removeItem(item)"/>
+                </div>
+            </div>
+        </div>
+   </div>
+    
+</body>
+</html>

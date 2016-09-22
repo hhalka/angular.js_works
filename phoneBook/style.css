@@ -1,0 +1,46 @@
+#findForm {
+    margin-top: 50px;
+}
+
+#block {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	background-color: rgba(242, 242, 242, 0.7);
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+#addWindow {
+    padding: 1%;
+	width: 25%;
+	position: absolute;
+	top: 10%;
+	left: 35%;
+    background-color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#changeWindow {
+    padding: 1%;
+	width: 25%;
+	position: absolute;
+	top: 10%;
+	left: 35%;
+    background-color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.item {
+    padding: 10px 0;
+    border-bottom: 1px solid  #e6e6e6;
+}
+
+.head {
+    margin: 20px 0;
+}

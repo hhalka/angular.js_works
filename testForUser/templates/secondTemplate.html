@@ -1,0 +1,12 @@
+<div class="row" ng-controller="secondCtrl as second">
+    <div class="col-md-7">
+        <h1>this is second question</h1>
+        <ul class='answerList'><p class='list-group-item active'>{{second.test.question}}</p>
+            <li ng-repeat="option in second.test.options">
+                <label><input type="checkbox" value={{option}} ng-model="second.selected[option]">{{option}}</label>
+            </li>
+        </ul>
+        <input type="button" value="Check" class="btn btn-primary" ng-click="second.checkAnswer(nav.rightAnswer)">
+        <input type="button" value="Next" class="btn btn-link" ng-show="second.showBtn" ng-click="second.goAhead()">
+    </div>
+</div>

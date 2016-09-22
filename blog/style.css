@@ -1,0 +1,62 @@
+body {
+    background: #fff7e6;
+}
+
+#theme {
+    width: 100%;
+}
+
+#block {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	background-color: rgba(242, 242, 242, 0.7);
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+#login {
+    padding: 1%;
+	width: 25%;
+	position: absolute;
+	top: 10%;
+	left: 35%;
+    background-color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#changeWindow {
+    padding: 1%;
+	width: 25%;
+	position: absolute;
+	top: 10%;
+	left: 35%;
+    background-color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#remember {
+    margin-left: 17%;
+}
+
+#changeMessage{
+    resize: none;
+}
+
+.error {
+    color: red;
+}
+
+.message {
+    max-height: 300px;
+    overflow: auto;
+}
+
+.post{
+    margin: 20px 0;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="routeApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .start {
+            margin-top: 40px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="angular-route.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    
+    <script src="main_controller.js"></script>
+    <script src="approute.js"></script>
+    <script src="config.js"></script>
+    <script src="controllers/controller1.js"></script>
+    <script src="controllers/controller2.js"></script>
+    <script src="controllers/controller3.js"></script>
+</head>
+<body ng-controller="navigationCtrl as nav">
+    <div class="container">
+        <ul class="col-lg-4">
+            <li ng-repeat="key in nav.arr">
+                <a href="{{key.link}}">{{key.title}}</a>
+            </li>
+        </ul>
+        <div>
+            <ng-view></ng-view>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="row" ng-controller="thirdCtrl as third">
+    <div class="col-md-7">
+        <h1>this is third question</h1>
+        <ul class='answerList'><p class='list-group-item active'>{{third.test.question}}</p>
+            <li ng-repeat="option in third.test.options">
+                <label><input type="checkbox" value={{option}} ng-model="third.selected[option]">{{option}}</label>
+            </li>
+        </ul>
+        <input type="button" value="Check" class="btn btn-primary" ng-click="third.checkAnswer(nav.rightAnswer)">
+        <input type="button" value="Get my result" class="btn btn-success" ng-show="third.showBtn" ng-click="third.showResult(nav.rightAnswer)">
+    </div>
+</div>

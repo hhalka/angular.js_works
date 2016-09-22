@@ -1,0 +1,46 @@
+body{
+    background-color: #e6e6e6 !important;
+}
+#main {
+    height: 100%;
+    width: 60%;
+    margin: auto;
+}
+.bold{
+    font-weight: bold;
+}
+.taskLabel{
+    width: 100%;
+}
+.task{
+    border: 2px solid white;
+    height: 50px;
+    padding: 10px;
+}
+.taskText{
+    margin-left: 87px;
+}
+.myline{
+    width: 90%;
+    border-top: 1px solid white;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.taskButton{
+    width: 100px;
+}
+.inprogress {
+    color: red;
+}
+.done {
+    color: green;
+}
+.taskListForm{
+    height: 40px;
+    margin: 10px;
+}
+.taskListForm input {
+    height: 100%;
+    float: right;
+}
+
